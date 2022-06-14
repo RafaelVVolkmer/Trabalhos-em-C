@@ -1,31 +1,37 @@
 #include <stdio.h>
 #include <string.h>
 #include <locale.h>
+#include <inttypes.h>
 
-
+//Criação dos Arquivos
 FILE *fp;
 FILE *fpmod;
-//estrutura de dados
-struct dados{
-char nome[30];
-char endereco[30];
-int anonasc;
-char cpf[12];
-char cel[10];
+
+//Estrutura para Armazenar Dados
+struct dados
+{
+char nome[50];
+char endereco[50];
+uint16_t anonasc;
+char cpf[14];
+char cel[20];
 char email[50];
 }d1;
 
-struct dadosmod{
-char nome[30];
-char endereco[30];
-int anonasc;
+//Estrutura para Modificar os Dados
+struct dadosmod
+{
+char nome[50];
+char endereco[50];
+uint16_t anonasc;
 char cpf[12];
 char cel[10];
 char email[50];
 }dmod;
 
-//para receber os dados
-void cadastro(){
+//Função para Cadastro
+void cadastro()
+{
 
 {
     setlocale(LC_ALL, "");
@@ -62,11 +68,13 @@ void cadastro(){
 }
 };
 
-void pnome(){
+//Função para Pesquisar por Nome
+void pnome()
+{
 
      setlocale(LC_ALL, "");
 
-     int a=0;
+     uint8_t a=0;
      char nome[30];
 
      fflush(stdin);
@@ -95,15 +103,17 @@ void pnome(){
     }
     fclose(fp);
 
-    menu();;
+    menu();
 }
 };
 
-void pendereco(){
+//Função para Pesquisar por Endereço
+void pendereco()
+{
 
      setlocale(LC_ALL, "");
 
-     int b=0;
+     uint8_t b=0;
      char endereco[30];
 
      fflush(stdin);
@@ -136,12 +146,14 @@ void pendereco(){
 }
 };
 
-void pnascimento(){
+//Função para Pesquisar por Data de Nascimentos
+void pnascimento()
+{
 
      setlocale(LC_ALL, "");
 
-     int c=0;
-     int ano;
+     uint8_t c=0;
+     unsigned int ano;
 
      fflush(stdin);
      printf("\nDigite o nascimento:");
@@ -169,15 +181,17 @@ void pnascimento(){
     }
     fclose(fp);
 
-    menu();;
+    menu();
 }
 };
 
-void pcpf(){
+//Função para Pesquisar por CPF
+void pcpf()
+{
 
      setlocale(LC_ALL, "");
 
-     int d=0;
+     uint8_t d=0;
      char cpf[12];
 
      fflush(stdin);
@@ -206,15 +220,17 @@ void pcpf(){
     }
     fclose(fp);
 
-    menu();;
+    menu();
 }
 };
 
-void pcel(){
+//Função para Pesquisar por Número de Celular
+void pcel()
+{
 
      setlocale(LC_ALL, "");
 
-     int e=0;
+     uint8_t e=0;
      char cel[10];
 
      fflush(stdin);
@@ -243,15 +259,17 @@ void pcel(){
     }
     fclose(fp);
 
-    menu();;
+    menu();
 }
 };
 
-void pemail(){
+//Função para Pesquisar por E-MAIL
+void pemail()
+{
 
      setlocale(LC_ALL, "");
 
-     int e=0;
+     uint8_t e=0;
      char email[50];
 
      fflush(stdin);
@@ -280,18 +298,21 @@ void pemail(){
     }
     fclose(fp);
 
-    menu();;
+    menu();
 }
 };
 
-void menu(){
+//Função que Retona ao Menu
+void menu()
+{
 {
     setlocale(LC_ALL, "");
-    int opt;
-
-    printf("\n\nDeseja retornar ao menu inicial?");
-    printf("\n#1-SIM\n#2-NÃO");
-    printf("\nOpção:");
+    uint8_t opt;
+    printf("\n\n----------------------------");
+    printf("\nDeseja retornar ao menu inicial?");
+    printf("\n----------------------------\n");
+    printf("\n1 - SIM\n2 - NÃO\n");
+    printf("\nOpção: ");
     scanf("%i", &opt);
 
      switch(opt)
@@ -302,17 +323,21 @@ void menu(){
             main();
 
             case 2:
-            printf("ENCERRANDO...");
+            printf("\n----------------------------");
+            printf("\nEncerrando Programa...");
+            printf("\n----------------------------\n");
             break;
         }
 
 }
 };
 
-void edit(){
+//Função para Pesquisar para Editar o Arquivo
+void edit()
+{
     setlocale(LC_ALL, "");
 
-     int e=0;
+     uint8_t e=0;
      char nomeedit[30];
 
      fflush(stdin);
@@ -367,14 +392,16 @@ void edit(){
     remove("arquivo.txt");
     rename("temp.txt", "arquivo.txt");
 
-    menu();;
+    menu();
 }
 };
 
-void del(){
+//Função para Pesquisar para Editar o Dados de Cadsatro
+void del()
+{
    setlocale(LC_ALL, "");
 
-     int e=0;
+     uint8_t e=0;
      char nomeedit[30];
 
      fflush(stdin);
@@ -413,24 +440,29 @@ void del(){
     remove("arquivo.txt");
     rename("temp.txt", "arquivo.txt");
 
-    menu();;
+    menu();
 }
 };
 
+//MENU
 int main()
 {
     setlocale(LC_ALL, "");
 
-    int op;
+    uint8_t op;
 
-    printf("****Opções****");
-    printf("\n#1:Cadastrar");
-    printf("\n#2:Procurar");
-    printf("\n#3:Editar");
-    printf("\n#4:Deletar");
+    printf("============================");
+    printf("\nBANCO DE DADOS DOS CRIA");
+    printf("\n============================");
+    printf("\n1 - Cadastrar Usuário.");
+    printf("\n2 - Procurar Usuário.");
+    printf("\n3 - Editar Arquivo.");
+    printf("\n4 - Deletar Dados.");
 
-    printf("\n\nConforme o número digite qual opção deseja:");
+    printf("\n----------------------------");
+    printf("\nInsira o número de acordo\ncom o que deseja realizar: ");
     scanf("%i", &op);
+
 
     switch(op){
 
@@ -440,8 +472,13 @@ int main()
     case 2:
        system("cls");
        {
-           int op;
-           printf("Ok, deseja pesquisar por:\n#1-Nome\n#2-Endereço\n#3-Nascimento\n#4-CPF\n#5-Celular\n#6-e-mail\n\nDigite a opção:");
+           uint8_t op;
+           printf("============================");
+           printf("\nBARRA DE PESQUISA");
+           printf("\n============================");
+           printf("\n1 - Nome \n2 - Endereço \n3 - Nascimento \n4 - CPF \n5 - Celular \n6 - e-mail");
+           printf("\n----------------------------");
+           printf("\nInsira o número de acordo\ncom o que deseja pesquisar: ");
            scanf("%i", &op);
 
            switch(op){
@@ -469,6 +506,11 @@ int main()
            case 6:
             pemail();
             break;
+
+            default:
+            printf("\nOpção Inválida...");
+            menu();
+            break;
            }
        }
        break;
@@ -479,6 +521,10 @@ int main()
 
     case 4:
         del();
+        break;
+    default:
+        printf("\nOpção Inválida...");
+        menu();
         break;
     }
     return 0;
