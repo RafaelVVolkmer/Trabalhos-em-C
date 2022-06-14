@@ -307,25 +307,32 @@ void menu()
 {
 {
     setlocale(LC_ALL, "");
-    uint8_t opt;
+    char opt;
+    opt=0;
     printf("\n\n----------------------------");
     printf("\nDeseja retornar ao menu inicial?");
     printf("\n----------------------------\n");
     printf("\n1 - SIM\n2 - NÃO\n");
     printf("\nOpção: ");
-    scanf("%i", &opt);
+    scanf("%c", &opt);
 
      switch(opt)
         {
 
-            case 1:
+            case '1':
             system("cls");
             main();
+            break;
 
-            case 2:
+            case '2':
             printf("\n----------------------------");
             printf("\nEncerrando Programa...");
             printf("\n----------------------------\n");
+            break;
+
+            default:
+            printf("Opção Inválida...");
+            menu();
             break;
         }
 
