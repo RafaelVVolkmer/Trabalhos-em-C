@@ -314,6 +314,7 @@ void menu()
     printf("\n----------------------------\n");
     printf("\n1 - SIM\n2 - NÃO\n");
     printf("\nOpção: ");
+    fflush(stdin);
     scanf("%c", &opt);
 
      switch(opt)
@@ -412,7 +413,7 @@ void del()
      char nomeedit[30];
 
      fflush(stdin);
-     printf("\nDigite o nome do usuário que deseja editar:");
+     printf("\nDigite o nome do usuário que deseja deletar: ");
      gets(nomeedit);
 
 {
@@ -471,7 +472,8 @@ int main()
     scanf("%i", &op);
 
 
-    switch(op){
+    switch(op)
+    {
 
     case 1:
         cadastro();
