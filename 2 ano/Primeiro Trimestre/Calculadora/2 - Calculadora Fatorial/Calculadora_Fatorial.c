@@ -1,29 +1,31 @@
 #include <stdio.h>
+#include <locale.h>
 
 float calculo (float numero)
 {
 
-  float resposta;
+    float resposta;
   
-  for( ; numero >= 1; numero--)
-  {
-   resposta *= numero; 
-  }
+    for( ; numero >= 1; numero--)
+    {
+    resposta *= numero; 
+    }
   
-  return resposta;
+    return resposta;
 }
 
 int main (void)
 {
-  float numero;
+    setlocale(LC_ALL, "");
+
+    float numero;
   
-  printf("Digite o número que deseja fatorar: ");
-  scanf("%f", &numero);
+    printf("Digite o número que deseja fatorar: ");
+    scanf("%f", &numero);
   
-  calculo();
+    float resposta = calculo(numero);
   
-  printf("Seu valor fatorado é: %i", &resposta);
-  scanf("%f", &numero);
+    printf("Seu valor fatorado é: %i", resposta);
   
-  return 0;
+    return 0;
 }
